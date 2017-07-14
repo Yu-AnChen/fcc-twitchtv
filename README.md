@@ -1,6 +1,19 @@
 # FccTwitchtv
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
+Build a app that is functionally similar to [this](https://codepen.io/FreeCodeCamp/full/Myvqmo/).
+
+## User Stories
+
+1. I can see whether Free Code Camp is currently streaming on Twitch.tv.
+2. I can click the status output and be sent directly to the Free Code Camp's Twitch.tv channel.
+3. If a Twitch user is currently streaming, I can see additional details about what they are streaming.
+
+## Hints
+
+1. [An example call to Twitch.tv's JSONP API](http://forum.freecodecamp.org/t/use-the-twitchtv-json-api/19541)
+2. [The relevant documentation about this API call](https://dev.twitch.tv/docs/v5/reference/streams/#get-stream-by-user)
+3. Here's an array of the Twitch.tv usernames of people who regularly stream: ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
+4.  Use `https://wind-bow.gomix.me/twitch-api` instead of twitch's API base URL
 
 ## Development server
 
@@ -13,16 +26,3 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
