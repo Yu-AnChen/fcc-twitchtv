@@ -1,0 +1,20 @@
+<div class="d-flex-column width-full">
+	<hr>
+	<div *ngFor="let channel of channelsAndStreams"
+		class="d-flex-row channel">
+		<div class="image-container">
+			<img [src]="channel[0].logo" alt="">
+		</div>
+		<div class="indicator-container">
+			<fa name="circle" size="sm"></fa>
+		</div>
+		<div class="d-flex-column">
+			<h2>{{channel[0].display_name}}</h2>
+			<p *ngIf="channel[1].stream">{{channel[1].stream.game}} | {{channel[1].stream.channel.status}}</p>
+			<p *ngIf="!channel[1].stream">
+				Offline
+			</p>
+		</div>
+
+	</div>
+</div>
