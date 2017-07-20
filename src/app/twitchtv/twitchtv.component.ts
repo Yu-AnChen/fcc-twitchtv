@@ -14,6 +14,10 @@ import 'rxjs/add/operator/do';
 })
 export class TwitchtvComponent implements OnInit {
 	channelsAndStreams;
+	show = {
+		stream: true,
+		offline: false
+	};
 	constructor(private twitchtvService: TwitchtvService) { }
 
 	ngOnInit() {
@@ -32,6 +36,19 @@ export class TwitchtvComponent implements OnInit {
 			// .subscribe(result => console.log(result));
 	}
 
+	toggle(bool) {
+		return this.show[bool] = !this.show[bool];
+	}
+
+	decideShow(stream) {
+		if (stream && this.show.stream) {
+			return true;
+		}
+		if (!stream && this.show.offline) {
+			return true;
+		}
+		return false;
+	}
 	_parseData(data) {
 		let channelDatas = data.slice(0, data.length / 2);
 		let streamDatas = data.slice(data.length / 2 - 1);

@@ -1,12 +1,21 @@
 <div class="d-flex-column width-full">
 	<hr>
-	<div *ngFor="let channel of channelsAndStreams"
-		class="d-flex-row channel">
+	<div class="control-container flex-center-row">
+		<fa name="eye" size="lg"></fa>
+		<a (click)="toggle('stream')" [ngClass]="{'active': show.stream, 'button': 1}">STREAMING</a>
+		<a (click)="toggle('offline')"[ngClass]="{'active': show.offline, 'button': 1}">OFFLINE</a>
+	</div>
+	<a *ngFor="let channel of channelsAndStreams"
+		class="channel chunk"
+		[ngClass]="decideShow(channel[1].stream) ? 'd-flex-row' : 'd-hidden'"
+		[href]="channel[0].url" target="_blank">
 		<div class="image-container">
 			<img [src]="channel[0].logo" alt="">
 		</div>
 		<div class="indicator-container">
-			<fa name="circle" size="sm"></fa>
+			<fa name="circle" size="sm"
+				[ngClass]="{'indicator-streaming ani-blink-1': channel[1].stream, 'indicator-offline': !channel[1].stream}"
+			></fa>
 		</div>
 		<div class="d-flex-column">
 			<h2>{{channel[0].display_name}}</h2>
@@ -15,6 +24,5 @@
 				Offline
 			</p>
 		</div>
-
-	</div>
+	</a>
 </div>
