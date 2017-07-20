@@ -21,6 +21,10 @@ body {
 	color: $textColorAccent;
 }
 
+.d-hidden {
+	display: none;
+}
+
 .d-flex {
 	display: flex;
 	max-width: 100%;
@@ -50,19 +54,22 @@ body {
 	width: 100%;
 }
 
-.ani-blink {
-	animation: blinker 2s linear infinite;
-}
 @keyframes blinker {
 	50% {
 		opacity: 0
 	}
 }
+@for $index from 1 through 2 {
+	.ani-blink-#{$index} {
+		animation: blinker #{$index}s linear infinite;
+	}
+}
+
 
 
 @include linx($textColorAccent, $textColorAccent, $textColorAccent, $textColorAccent);
 
-a:not(.button) {
+a:not(.button):not(.chunk) {
 	position: relative;
 	text-decoration: none;
 	&::before {
