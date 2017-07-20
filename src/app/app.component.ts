@@ -25,5 +25,5 @@ import {
 	]
 })
 export class AppComponent {
-	title = 'app';
+	title = 'twitchTv';
 }

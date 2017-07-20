@@ -1,0 +1,20 @@
+.content {
+	width: 600px;
+	@media screen and (max-width: 599px) {
+		width: 100%;
+	}
+	min-height: 97vh;
+}
+header {
+	display: flex;
+	align-items: center;
+	h1 {
+		font-size: 1.5em;
+		font-weight: 700;
+		margin: 1em 0;
+	}
+}
+
+.main {
+	display: flex;
+}
