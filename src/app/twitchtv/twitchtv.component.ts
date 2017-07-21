@@ -1,16 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitchtvService } from './twitchtv.service';
 
+import {
+	trigger,
+	state,
+	style,
+	animate,
+	transition
+} from '@angular/animations';
+
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
 
 @Component({
 	selector: 'app-twitchtv',
 	templateUrl: './twitchtv.component.html',
 	styleUrls: ['./twitchtv.component.scss'],
-	providers: [TwitchtvService]
+	providers: [TwitchtvService],
+	animations: [
+		trigger('fadeInOut', [
+			state('in', style({ opacity: 1 })),
+			transition('void => *', [
+				style({ opacity: 0 }),
+				animate(500)
+			]),
+			transition('* => void', [
+				animate(200, style({ opacity: 0 }))
+			])
+		]),
+		trigger('flyInOut', [
+			state('true', style({ opacity: '1', display: 'flex' })),
+			state('false', style({ opacity: '0', display: 'none'  })),
+			transition('true => false', animate(500)),
+			transition('false => true', animate(500)),
+			transition('void => true', [
+				style({ opacity: '0', display: 'flex'}),
+				animate(500)
+			]),
+		]),
+	]
 })
 export class TwitchtvComponent implements OnInit {
 	channelsAndStreams;
@@ -21,19 +49,11 @@ export class TwitchtvComponent implements OnInit {
 	constructor(private twitchtvService: TwitchtvService) { }
 
 	ngOnInit() {
-		// let fcc = this.twitchtvService.getStreamers('freecodecamp');
-		let channelNames = ['ESL_SC2', 'OgamingSC2', 'cretetion', 'freecodecamp'];
-		let streamers = channelNames.map(channel => this.twitchtvService.getStreamer(channel));
-		let channels = channelNames.map(channel => this.twitchtvService.getChannel(channel));
-
-		// this.channelsAndStreams = Observable
-			Observable.forkJoin([...channels, ...streamers])
-			.do(data => console.log(data))
+		this.twitchtvService.getChannelsAndStreams()
+			.delay(1500)
 			.subscribe(result => {
-				this.channelsAndStreams = this._parseData(result);
+				this.channelsAndStreams = result;
 			});
-		// this.twitchtvService.getStreamers('freecodecamp')
-			// .subscribe(result => console.log(result));
 	}
 
 	toggle(bool) {
@@ -49,10 +69,4 @@ export class TwitchtvComponent implements OnInit {
 		}
 		return false;
 	}
-	_parseData(data) {
-		let channelDatas = data.slice(0, data.length / 2);
-		let streamDatas = data.slice(data.length / 2 - 1);
-		return channelDatas.map((element, idx) => [element, streamDatas[idx]]);
-	}
-
 }
