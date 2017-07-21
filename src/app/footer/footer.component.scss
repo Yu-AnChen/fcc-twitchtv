@@ -1,0 +1,16 @@
+@import '../../styles/_variables.scss';
+
+footer {
+    font-family: $fontFamily;
+    font-weight: 900;
+    margin: 1em auto;
+    letter-spacing: 0em;
+	line-height: 1.75;
+	text-align: center;
+
+    .footer-divider {
+        width: 3em;
+        border-bottom: solid $textColor;
+        margin: 1em auto
+    }
+}

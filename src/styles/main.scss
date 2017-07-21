@@ -67,7 +67,7 @@ body {
 
 
 
-@include linx($textColorAccent, $textColorAccent, $textColorAccent, $textColorAccent);
+@include linx($textColor, $textColor, $textColor, $textColor);
 
 a:not(.button):not(.chunk) {
 	position: relative;
@@ -78,7 +78,7 @@ a:not(.button):not(.chunk) {
 		left: 0;
 		box-sizing: border-box;
 		content: '';
-		border-bottom: solid 0px $accentColor;
+		border-bottom: solid 0px $textColorAccent;
 		width: 100%;
 		height: 100%;
 		bottom: 0px;
@@ -87,7 +87,7 @@ a:not(.button):not(.chunk) {
 
 	&:hover {
 		&::before {
-			border-bottom: solid 0.25em $accentColor
+			border-bottom: solid 0.25em $textColorAccent
 		}
 	}
 }

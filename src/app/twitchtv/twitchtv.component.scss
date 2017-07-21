@@ -17,10 +17,13 @@ hr {
 		border: 2px solid;
 		padding: 0.5em;
 		cursor: pointer;
+		transition: background 0.2s;
+		// transition: color 1s;
 
 		&.active {
 			background: $textColor;
 			color: $bodyBgColor;
+			border-color: $textColor;
 		}
 	}
 }

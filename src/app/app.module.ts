@@ -7,11 +7,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 
 import { AppComponent } from './app.component';
 import { TwitchtvComponent } from './twitchtv/twitchtv.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TwitchtvComponent
+	TwitchtvComponent,
+	FooterComponent
   ],
   imports: [
 	BrowserModule,
